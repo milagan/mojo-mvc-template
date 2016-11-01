@@ -7,3 +7,16 @@ and the layout "templates/layouts/default.html.ep",
 <%= link_to 'here' => '/index.html' %> to move forward to a static page. To
 learn more, you can also browse through the documentation
 <%= link_to 'here' => '/perldoc' %>.
+<script>
+    var ws = new WebSocket('<%= url_for('echo')->to_abs %>');
+
+    // Incoming messages
+    ws.onmessage = function (event) {
+    document.body.innerHTML += event.data + '<br/>';
+    };
+
+    // Outgoing messages
+    ws.onopen = function (event) {
+    window.setInterval(function () { ws.send('Hello Mojo!') }, 1000);
+    };
+</script>
