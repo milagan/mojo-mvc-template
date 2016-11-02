@@ -8,8 +8,9 @@ use MojoX::Log::Log4perl;
 sub startup {
   my $self = shift;
   my $ctx  = zmq_init();;
+  my $value = 0;
   
-  $self->log( MojoX::Log::Log4perl->new('log.conf'), 'HUP' );
+  #$self->log( MojoX::Log::Log4perl->new('log.conf'), 'HUP' );
 
   $self->helper(zmqsock_to_fd => sub {
                   my ( $c, $socket ) = @_;
@@ -19,6 +20,9 @@ sub startup {
 
   $self->helper(subscribe_socket => sub { return $self->init_subscribe_socket($ctx); });
   $self->helper(publish_socket   => sub { return $self->init_publish_socket($ctx); });
+  $self->helper(get_value => sub { return $value; });
+  $self->helper(inc_value => sub { return ++$value; });
+
   my $s = $self->init_publish_socket($ctx);
 
   Mojo::IOLoop->recurring(0.2 => sub {
@@ -28,13 +32,20 @@ sub startup {
 
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
+  $self->plugin("OpenAPI" => {    
+    url => $self->home->rel_file("api.json")
+  });    
 
   # Router
   my $r = $self->routes;
 
   # Normal route to controller
-  $r->get('/')->to('example#welcome');
-  $r->websocket('/echo')->to('example#echo');  
+  $r->get('/')->to('example#welcome'); 
+  $r->get('/helper')->to('example#helper');
+  $r->get('/value')->to('example#value');
+  $r->get('/incvalue')->to('example#incvalue');
+  $r->websocket('echo')->to('example#echo');  
+
 }
 
 sub init_publish_socket {

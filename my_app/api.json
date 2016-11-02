@@ -1,0 +1,110 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Sample Mojolicious MVC application.\n",
+        "version": "1.0.0",
+        "title": "Sample Mojolicious MVC application",
+        "termsOfService": "http://www.checkpointsystems.com",
+        "contact": {
+            "name": "evolve.support@checkpt.com"
+        }
+    },
+    "host": "localhost",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/sample" : {
+            "get": {
+                "tags": [
+                    "Log"
+                ],
+                "summary": "Sample method",
+                "description": "",
+                "operationId": "getSample",
+                "x-mojo-name": "get_sample",
+                "x-mojo-to": "example#sample",                
+                "consumes": [],     
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],   
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/Log"
+                            }
+                        }
+                    }
+                },    
+                "deprecated": false 
+            }                                                   
+        },
+        "/log": {
+            "get": {
+                "tags": [
+                    "Log"
+                ],
+                "summary": "Return log records",
+                "description": "",
+                "operationId": "getLog",
+                "x-mojo-name": "get_log",
+                "x-mojo-to": "example#log",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "last_id",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "query",
+                        "name": "log_count",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/Log"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Log": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "EmailAddress": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
