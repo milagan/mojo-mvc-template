@@ -7,3 +7,6 @@ Template for a Perl (Mojolicious) Microservice
 - SQLite
 - ZeroMQ
 - RabbitMQ
+- Swagger/OpenAPI
+- Unit Testing
+- Docker
