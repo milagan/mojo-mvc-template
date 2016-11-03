@@ -3,6 +3,7 @@ use Mojo::Base 'Mojolicious';
 use ZMQ::LibZMQ3;
 use ZMQ::Constants qw|ZMQ_PUB ZMQ_SUB ZMQ_SUBSCRIBE ZMQ_FD ZMQ_NOBLOCK|;
 use MojoX::Log::Log4perl;
+use MyApp::Model::Data;
 
 # This method will run once at server start
 sub startup {
