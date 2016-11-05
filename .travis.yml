@@ -8,6 +8,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y --no-install-recommends libsqlite3-dev libzmq3-dev
   - cpanm Mojolicious
+  - cpanm Mojolicious::Plugin::OpenAPI
   - cpanm DBI
   - cpanm DBD::SQLite
   - cpanm ZMQ::LibZMQ3
