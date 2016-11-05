@@ -5,10 +5,25 @@ use ZMQ::Constants qw|ZMQ_PUB ZMQ_SUB ZMQ_SUBSCRIBE ZMQ_FD ZMQ_NOBLOCK|;
 use MojoX::Log::Log4perl;
 use MyApp::Model::Data;
 
+use File::Basename 'dirname';
+use File::Spec::Functions 'catdir';
+
+our $VERSION = '1.0';
+
 # This method will run once at server start
 sub startup {
   my $self = shift;
-  my $ctx  = zmq_init();;
+  
+  # Switch to installable home directory
+  $self->home->parse(catdir(dirname(__FILE__), 'MyApp'));
+  
+  # Switch to installable "public" directory
+  $self->static->paths->[0] = $self->home->rel_dir('public');
+
+  # Switch to installable "templates" directory
+  $self->renderer->paths->[0] = $self->home->rel_dir('templates');
+
+  my $ctx  = zmq_init();
   my $value = 0;
   
   #$self->log( MojoX::Log::Log4perl->new('log.conf'), 'HUP' );
