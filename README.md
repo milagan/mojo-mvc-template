@@ -1,7 +1,8 @@
 # MojoMVC
 Mojolicious MVC Framework
 
-[![Build Status](https://travis-ci.org/milagan/MojoMVC.svg?branch=master)](https://travis-ci.org/milagan/MojoMVC)
+[![Build Status](https://travis-ci.org/milagan/MojoMVC.svg?branch=master)](https://travis-ci.org/milagan/MojoMVC)[![codecov](https://codecov.io/gh/milagan/MojoMVC/branch/master/graph/badge.svg)](https://codecov.io/gh/milagan/MojoMVC)
+
 
 Template for a Perl (Mojolicious) Microservice
 
