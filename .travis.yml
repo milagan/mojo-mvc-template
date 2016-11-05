@@ -3,3 +3,15 @@ perl:
   - "5.22"
   - "5.20"
   - "5.18"
+env: PERL_CPANM_OPT="--notest --force --skip-satisfied"  
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y --no-install-recommends libsqlite3-dev libzmq3-dev
+  - cpanm Mojolicious
+  - cpanm DBI
+  - cpanm DBD::SQLite
+  - cpanm ZMQ::LibZMQ3
+  - cpanm MojoX::Log::Log4perl
+script: 
+  - perl Makefile.PL && make test
+  - perl script/my_app test
