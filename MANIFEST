@@ -12,10 +12,13 @@ lib/MyApp/public/index.html
 lib/MyApp/t/basic.t
 lib/MyApp/templates/example/welcome.html.ep
 lib/MyApp/templates/layouts/default.html.ep
+log.conf
 Makefile.PL
 MANIFEST			This list of files
+mojomvc.log
 my_app-0.01.tar.gz
 README.md
 script/foo.log
 script/log.conf
 script/my_app
+t/basic.t
