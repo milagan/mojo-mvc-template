@@ -1,6 +1,9 @@
+.travis.yml
+docker-create-rpi.sh
 docker-create.sh
 docker-run.sh
 Dockerfile
+Dockerfile.rpi
 lib/MyApp.pm
 lib/MyApp/api.json
 lib/MyApp/Controller/Example.pm
@@ -11,6 +14,8 @@ lib/MyApp/templates/example/welcome.html.ep
 lib/MyApp/templates/layouts/default.html.ep
 Makefile.PL
 MANIFEST			This list of files
+my_app-0.01.tar.gz
+README.md
 script/foo.log
 script/log.conf
 script/my_app

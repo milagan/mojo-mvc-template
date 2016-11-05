@@ -27,13 +27,13 @@ $ make dist
 Run application:
 
 ```
-$ morbo my_app/script/my_app
+$ morbo script/my_app
 ```
 
 Run test:
 
 ```
-$ perl my_app/script/my_app test
+$ perl script/my_app test
 ```
 
 Access swagger API definition:
@@ -45,5 +45,5 @@ $ curl http://<ip_address>:<port_no>/api
 Access sample REST API method:
 
 ```
-http://<ip_address>:<port_no>/api/sample
+$ curl http://<ip_address>:<port_no>/api/sample
 ```
