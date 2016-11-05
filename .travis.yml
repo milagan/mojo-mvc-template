@@ -2,9 +2,7 @@ language: perl
 perl:
   - "5.22"
   - "5.18"
-env: 
-  - PERL_CPANM_OPT="--notest --force --skip-satisfied"
-  - CODECOV_TOKEN="2b9edc47-4ed1-4e23-a045-2d4eb59e607a"  
+env: PERL_CPANM_OPT="--notest --force --skip-satisfied" CODECOV_TOKEN="2b9edc47-4ed1-4e23-a045-2d4eb59e607a"  
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y --no-install-recommends libsqlite3-dev libzmq3-dev
