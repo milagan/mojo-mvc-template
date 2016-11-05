@@ -26,7 +26,7 @@ sub startup {
   my $ctx  = zmq_init();
   my $value = 0;
   
-  #$self->log( MojoX::Log::Log4perl->new('log.conf'), 'HUP' );
+  $self->log( MojoX::Log::Log4perl->new('log.conf'), 'HUP' );
 
   $self->helper(zmqsock_to_fd => sub {
                   my ( $c, $socket ) = @_;
@@ -41,10 +41,10 @@ sub startup {
 
   my $s = $self->init_publish_socket($ctx);
 
-  Mojo::IOLoop->recurring(0.2 => sub {
-                                       zmq_msg_send($$.' hello world', 
-                                       $s, ZMQ_NOBLOCK);
-                                     });
+  #Mojo::IOLoop->recurring(0.2 => sub {
+  #                                     zmq_msg_send($$.' hello world', 
+  #                                     $s, ZMQ_NOBLOCK);
+  #                                   });
 
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
