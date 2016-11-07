@@ -7,6 +7,7 @@ use MyApp::Model::Data;
 
 use File::Basename 'dirname';
 use File::Spec::Functions 'catdir';
+use File::Spec;
 
 our $VERSION = '1.0';
 
@@ -14,6 +15,10 @@ our $VERSION = '1.0';
 sub startup {
   my $self = shift;
   
+  # Create model instance
+  my $model = new MyApp::Model::Data($self);
+  $model->open();
+
   # Switch to installable home directory
   $self->home->parse(catdir(dirname(__FILE__), 'MyApp'));
   
@@ -23,6 +28,7 @@ sub startup {
   # Switch to installable "templates" directory
   $self->renderer->paths->[0] = $self->home->rel_dir('templates');
 
+  # Initialize ZeroMQ
   my $ctx  = zmq_init();
   my $value = 0;
   
@@ -38,7 +44,7 @@ sub startup {
   $self->helper(publish_socket   => sub { return $self->init_publish_socket($ctx); });
   $self->helper(get_value => sub { return $value; });
   $self->helper(inc_value => sub { return ++$value; });
-
+  $self->helper(model => sub { return $model; }); 
   my $s = $self->init_publish_socket($ctx);
 
   #Mojo::IOLoop->recurring(0.2 => sub {
@@ -61,7 +67,8 @@ sub startup {
   $r->get('/value')->to('example#value');
   $r->get('/incvalue')->to('example#incvalue');
   $r->websocket('echo')->to('example#echo');  
-
+  $r->get('/write_sqlitedb')->to('example#write_sqlitedb');
+  $r->get('/read_sqlitedb')->to('example#read_sqlitedb');
 }
 
 sub init_publish_socket {

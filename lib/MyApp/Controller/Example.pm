@@ -73,4 +73,18 @@ sub echo {
   });
 }
 
+sub write_sqlitedb {
+  my $c = shift;
+
+  $c->model->insert_sqlite();
+  $c->render(json => {data => 'OK'});      
+}
+
+sub read_sqlitedb {
+  my $c = shift;
+
+  my $data = $c->model->select_sqlite();
+  $c->render(json => {data => $data});      
+}
+
 1;
