@@ -1,0 +1,18 @@
+redis:
+    image: redis
+
+rabbitmq:
+    image: rabbitmq
+
+mongo:
+    image: mongo    
+
+mojomvc:
+    image: milagan77/mojomvc
+    ports: 
+        - "8080:80"
+    links:
+        - redis
+        - rabbitmq
+        - mongo
+    

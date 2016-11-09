@@ -20,4 +20,4 @@ WORKDIR /app
 
 EXPOSE 80/tcp
 
-CMD ["./docker-run.sh"]
+CMD ["docker-entrypoint.sh"]

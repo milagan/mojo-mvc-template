@@ -44,6 +44,12 @@ Run via docker:
 $ docker run -d -p 8080:80 milagan77/mojomvc 
 ```
 
+Run via docker-compose:
+
+```
+$ docker-compose up
+```
+
 Access swagger API definition:
 
 ```
