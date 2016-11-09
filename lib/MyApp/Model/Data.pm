@@ -12,7 +12,7 @@ sub new {
    
     bless $self, $class;
     return $self;
-};
+}
 
 sub open {
     my ($self) = @_;
@@ -21,7 +21,7 @@ sub open {
 
     my $db = qq(dbi:SQLite:dbname=$dir../database/data.db);
     $self->{_db} = DBI->connect($db, "", "", {RaiseError => 1, AutoCommit => 1, sqlite_unicode => 1});
-};
+}
 
 sub close {
     my ($self) = @_;
@@ -29,7 +29,7 @@ sub close {
     if (defined($self->{_db})) {
         $self->{_db}->close();
     }
-};
+}
 
 sub insert_sqlite {
     my ($self) = @_;
@@ -41,7 +41,7 @@ sub insert_sqlite {
     );
 
     $insert->execute('test1', 'test2');
-};
+}
 
 sub select_sqlite {
     my ($self) = @_;
@@ -54,6 +54,6 @@ sub select_sqlite {
     $select->execute();
     my $data = $select->fetchall_arrayref({});
     return $data;
-};
+}
 
 1;
