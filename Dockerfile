@@ -10,14 +10,16 @@ RUN cpanm Mojolicious \
     && cpanm Mojolicious::Plugin::OpenAPI \
     && cpanm DBI \ 
     && cpanm DBD::SQLite \
-    && cpanm ZMQ::LibZMQ3 
-
-RUN cpanm MojoX::Log::Log4perl
+    && cpanm ZMQ::LibZMQ3 \
+    && cpanm MojoX::Log::Log4perl \
+    && rm -fr ./cpanm /root/.cpanm /usr/src/perl /tmp/*
 
 COPY . /app
 
 WORKDIR /app
 
+RUN chmod a+x docker-entrypoint.sh
+
 EXPOSE 80/tcp
 
-CMD ["docker-entrypoint.sh"]
+CMD ["./docker-entrypoint.sh"]
