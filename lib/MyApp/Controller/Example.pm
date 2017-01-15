@@ -1,4 +1,8 @@
 package MyApp::Controller::Example;
+
+use strict;
+use warnings;
+
 use Mojo::Base 'Mojolicious::Controller';
 use ZMQ::LibZMQ3;
 use ZMQ::Constants qw|ZMQ_PUB ZMQ_SUB ZMQ_SUBSCRIBE ZMQ_FD ZMQ_NOBLOCK|;

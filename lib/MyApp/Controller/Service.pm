@@ -1,4 +1,8 @@
 package MyApp::Controller::Service;
+
+use strict;
+use warnings;
+
 use Mojo::Base 'Mojolicious::Controller';
 
 sub get_restapi_blocking {

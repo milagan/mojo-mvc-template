@@ -4,7 +4,7 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
+  NAME      => 'MojoMVC',
   VERSION   => '0.01',
-  PREREQ_PM => {'Mojolicious' => '7.09'},
   test      => {TESTS => 't/*.t'}
 );

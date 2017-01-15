@@ -1,4 +1,8 @@
 package MyApp::Service::RestService;
+
+use warnings;
+use strict;
+
 use Mojo::JSON qw(decode_json encode_json);
 
 sub new {

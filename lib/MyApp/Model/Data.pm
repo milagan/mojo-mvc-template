@@ -1,5 +1,8 @@
 package MyApp::Model::Data;
 
+use strict;
+use warnings;
+
 use File::Spec;
 use DBI;
 
