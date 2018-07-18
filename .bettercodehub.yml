@@ -2,7 +2,3 @@ component_depth: 3
 languages:
 - perl
 - script
-name: perl
-test:
-  include:
-    - /t/.*\.t
