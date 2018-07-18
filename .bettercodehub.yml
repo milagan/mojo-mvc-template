@@ -3,5 +3,5 @@ languages:
 - perl
 - script
 test:
-    include:
-      - t/.t
+  include:
+    - t/.t
